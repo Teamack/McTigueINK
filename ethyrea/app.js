@@ -1,6 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
     const contentDisplay = document.getElementById("contentDisplay");
     const searchInput = document.getElementById("search");
+codex/refine-user-interface-and-experience
+    const fileList = {
+        "characters": [
+            "mainProtagonists.json",
+            "antagonists/kryss.json",
+            "antagonists/veregar.json",
+            "antagonists/vorath.json"
+        ],
+        "worldbuilding": [
+            "geography/mountains.json",
+            "fauna/mundane_animals.json",
+            "fauna/magical_creatures.json"
+        ],
+        "magic": [
+            "leyLines.json",
+            "spells/elemental_spells.json",
+            "spells/unique_spells.json"
+        ],
+        "artifacts": ["artifacts.json"]
+    };
+
+    document.querySelectorAll(".category-btn").forEach(btn => {
+        btn.addEventListener("click", async () => {
+            const category = btn.getAttribute("data-category");
+=======
 
 codex/enhance-user-interface-and-interactivity
     // Category buttons
@@ -24,6 +49,7 @@ codex/enhance-user-interface-and-interactivity
             e.preventDefault();
 main
             const category = e.target.getAttribute("data-category");
+main
             await loadCategory(category);
         });
     });
@@ -66,6 +92,11 @@ codex/enhance-user-interface-and-interactivity
 
 main
     async function loadCategory(category) {
+codex/refine-user-interface-and-experience
+        const spinner = document.getElementById("loadingSpinner");
+        spinner.style.display = "block";
+        searchInput.value = ""; // reset previous search
+=======
         const basePath = `/ethyrea/${category}/`;
         const fileList = {
             "characters": ["mainProtagonists.json", "antagonists.json"],
@@ -76,8 +107,10 @@ main
         };
 
         contentDisplay.innerHTML = `<h3>Loading ${category}...</h3>`;
+main
 
         try {
+            const basePath = `${category}/`; // use relative paths to avoid 404s on subdirectories
             const files = fileList[category];
             let combinedContent = `<h3>${category.toUpperCase()}</h3><ul>`;
             for (const file of files) {
@@ -86,9 +119,15 @@ main
             }
             combinedContent += "</ul>";
             contentDisplay.innerHTML = combinedContent;
+codex/refine-user-interface-and-experience
+            applyFade();
+=======
             broadcastUpdate(combinedContent);
+main
         } catch (error) {
             contentDisplay.innerHTML = `<p>Error loading ${category}: ${error.message}</p>`;
+        } finally {
+            spinner.style.display = "none";
         }
     }
 
@@ -139,6 +178,14 @@ main
 
     // Render data into HTML
     function renderData(file, data) {
+codex/refine-user-interface-and-experience
+        let html = `<li>
+            <button class="toggle-content">${file.replace('.json', '')}</button>
+            <div class="content-detail" style="display:none;">`;
+
+        for (const [key, value] of Object.entries(data)) {
+            html += `<p><strong>${key}:</strong> ${typeof value === 'object' ? JSON.stringify(value, null, 2) : value}</p>`;
+=======
         const entries = Object.entries(data);
         if (entries.length === 0) {
             return '';
@@ -146,10 +193,38 @@ main
         let html = `<li><h4>${file.replace('.json', '')}</h4><ul>`;
         for (const [key, value] of entries) {
             html += `<li><strong>${key}:</strong> ${typeof value === 'object' ? JSON.stringify(value, null, 2) : value}</li>`;
+main
         }
-        html += `</ul></li>`;
+
+        html += `</div></li>`;
         return html;
     }
+
+    // Toggle content visibility
+    document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("toggle-content")) {
+            const detail = e.target.nextElementSibling;
+            detail.style.display = detail.style.display === "none" ? "block" : "none";
+        }
+    });
+
+    // Search within displayed content
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        document.querySelectorAll("#contentDisplay li").forEach(li => {
+            li.style.display = li.textContent.toLowerCase().includes(query) ? "" : "none";
+        });
+    });
+
+    function applyFade() {
+        contentDisplay.classList.remove("fade-in");
+        // trigger reflow to restart animation
+        void contentDisplay.offsetWidth;
+        contentDisplay.classList.add("fade-in");
+    }
+
+    // apply initial fade
+    applyFade();
 });
 
 async function generateWithAI(prompt) {

@@ -7,6 +7,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+codex/refine-user-interface-and-experience
+  <header>
+    <h1>Ethyrea Lore Archive</h1>
+    <p>Dive into the world of Ethyrea</p>
+  </header>
+  <main>
+    <nav id="navigation">
+      <ul>
+        <li><button class="category-btn" data-category="characters">Characters</button></li>
+        <li><button class="category-btn" data-category="worldbuilding">Worldbuilding</button></li>
+        <li><button class="category-btn" data-category="magic">Magic</button></li>
+        <li><button class="category-btn" data-category="artifacts">Artifacts</button></li>
+      </ul>
+      <input type="text" id="search" placeholder="Search lore..." />
+    </nav>
+    <section id="content">
+      <h2>Welcome to Ethyrea</h2>
+      <div id="contentDisplay" class="fade-in">
+        <p>Explore the vibrant world of Ethyrea, its characters, magic, and lore. Use the navigation menu to begin.</p>
+      </div>
+    </section>
+  </main>
+  <div id="loadingSpinner" style="display:none;">
+    <p>Loading...</p>
+  </div>
+=======
 codex/enhance-user-interface-and-interactivity
     <header>
         <h1>Ethyrea: Explore the Mythos</h1>
@@ -44,6 +70,7 @@ codex/integrate-websockets-for-real-time-updates
     <a href="#" data-category="artifacts">Artifacts</a>
   </nav>
   <div id="contentDisplay"></div>
+main
 main
   <script type="module" src="app.js"></script>
 main
