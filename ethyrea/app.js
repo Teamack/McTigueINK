@@ -1,6 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
     const contentDisplay = document.getElementById("contentDisplay");
 
+    const socket = io('http://localhost:3000');
+
+    socket.on('update', (data) => {
+        contentDisplay.innerHTML = `<h3>Live Update</h3><p>${data}</p>`;
+    });
+
+    function broadcastUpdate(data) {
+        socket.emit('update', data);
+    }
+
     const links = document.querySelectorAll("[data-category]");
     links.forEach(link => {
         link.addEventListener("click", async (e) => {
@@ -30,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             combinedContent += "</ul>";
             contentDisplay.innerHTML = combinedContent;
+            broadcastUpdate(combinedContent);
         } catch (error) {
             contentDisplay.innerHTML = `<p>Error loading ${category}: ${error.message}</p>`;
         }
