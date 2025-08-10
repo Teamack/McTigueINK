@@ -22,14 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "artifacts": ["artifacts.json"]
     };
 
-    // Category buttons
-    document.querySelectorAll(".category-btn").forEach(btn => {
-        btn.addEventListener("click", async () => {
-            const category = btn.getAttribute("data-category");
-            await loadCategory(category);
-        });
-    });
-
     const socket = io('http://localhost:3000');
     socket.on('update', (data) => {
         contentDisplay.innerHTML = `<h3>Live Update</h3><p>${data}</p>`;
@@ -67,6 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const query = e.target.value.trim().toLowerCase();
         if (query.length > 2) {
             await searchContent(query);
+        } else {
+            document.querySelectorAll("#contentDisplay li").forEach(li => {
+                li.style.display = li.textContent.toLowerCase().includes(query) ? "" : "none";
+            });
         }
     });
 
@@ -142,7 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render data into HTML
     function renderData(file, data) {
-        let html = `<li>\n            <button class="toggle-content">${file.replace('.json', '')}</button>\n            <div class="content-detail" style="display:none;">`;
+        let html = `<li>
+            <button class="toggle-content">${file.replace('.json', '')}</button>
+            <div class="content-detail" style="display:none;">`;
         for (const [key, value] of Object.entries(data)) {
             html += `<p><strong>${key}:</strong> ${typeof value === 'object' ? JSON.stringify(value, null, 2) : value}</p>`;
         }
@@ -156,14 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const detail = e.target.nextElementSibling;
             detail.style.display = detail.style.display === "none" ? "block" : "none";
         }
-    });
-
-    // Search within displayed content
-    searchInput.addEventListener("input", () => {
-        const query = searchInput.value.toLowerCase();
-        document.querySelectorAll("#contentDisplay li").forEach(li => {
-            li.style.display = li.textContent.toLowerCase().includes(query) ? "" : "none";
-        });
     });
 
     function applyFade() {
