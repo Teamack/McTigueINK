@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     const contentDisplay = document.getElementById("contentDisplay");
+    const searchInput = document.getElementById("search");
 
+codex/enhance-user-interface-and-interactivity
+    // Category buttons
+    const buttons = document.querySelectorAll(".category-btn");
+    buttons.forEach(button => {
+        button.addEventListener("click", async (e) => {
+=======
     const socket = io('http://localhost:3000');
 
     socket.on('update', (data) => {
@@ -15,31 +22,57 @@ document.addEventListener("DOMContentLoaded", () => {
     links.forEach(link => {
         link.addEventListener("click", async (e) => {
             e.preventDefault();
+main
             const category = e.target.getAttribute("data-category");
             await loadCategory(category);
         });
     });
 
+codex/enhance-user-interface-and-interactivity
+    // AI generation button
     const aiButton = document.createElement("button");
     aiButton.textContent = "Generate with AI";
     aiButton.id = "aiGenerate";
+    aiButton.classList.add("category-btn");
+=======
+    const aiButton = document.createElement("button");
+    aiButton.textContent = "Generate with AI";
+    aiButton.id = "aiGenerate";
+main
     document.getElementById("navigation").appendChild(aiButton);
 
     aiButton.addEventListener("click", async () => {
         const promptText = prompt("Enter a prompt for AI (e.g., 'Describe a shadowy Nexus Point'):");
         if (promptText) {
             const generatedContent = await generateWithAI(promptText);
+codex/enhance-user-interface-and-interactivity
+            contentDisplay.innerHTML = `<h3>AI Generated Content</h3><p>${generatedContent}</p>`;
+        }
+    });
+
+    // Search functionality
+    searchInput.addEventListener("input", async (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        if (query.length > 2) {
+            await searchContent(query);
+        }
+    });
+
+    // Load content for a category
+=======
             document.getElementById("contentDisplay").innerHTML = `<h3>AI Generated Content</h3><p>${generatedContent}</p>`;
         }
     });
 
+main
     async function loadCategory(category) {
         const basePath = `/ethyrea/${category}/`;
         const fileList = {
             "characters": ["mainProtagonists.json", "antagonists.json"],
             "worldbuilding": ["geography/mountains.json", "flora/magicalPlants.json"],
             "magic": ["leyLines.json", "spells.json"],
-            "artifacts": ["artifacts.json"]
+            "artifacts": ["artifacts.json"],
+            "lore": ["myths.json"]
         };
 
         contentDisplay.innerHTML = `<h3>Loading ${category}...</h3>`;
@@ -59,9 +92,59 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function renderData(file, data) {
-        let html = `<li><h4>${file.replace('.json', '')}</h4><ul>`;
+    // Search content across all files
+    async function searchContent(query) {
+        const categories = ["characters", "worldbuilding", "magic", "artifacts", "lore"];
+        let results = `<h3>Search Results for \"${query}\"</h3><ul>`;
+        let hasMatches = false;
+
+        try {
+            for (const category of categories) {
+                const basePath = `/ethyrea/${category}/`;
+                const fileList = {
+                    "characters": ["mainProtagonists.json", "antagonists.json"],
+                    "worldbuilding": ["geography/mountains.json", "flora/magicalPlants.json"],
+                    "magic": ["leyLines.json", "spells.json"],
+                    "artifacts": ["artifacts.json"],
+                    "lore": ["myths.json"]
+                }[category];
+
+                for (const file of fileList) {
+                    const data = await fetch(basePath + file).then(res => res.json());
+                    const filteredData = filterData(data, query);
+                    const itemHtml = renderData(file, filteredData);
+                    if (itemHtml) {
+                        hasMatches = true;
+                        results += itemHtml;
+                    }
+                }
+            }
+            results += "</ul>";
+            contentDisplay.innerHTML = hasMatches ? results : `<p>No results found for \"${query}\".</p>`;
+        } catch (error) {
+            contentDisplay.innerHTML = `<p>Error during search: ${error.message}</p>`;
+        }
+    }
+
+    // Filter data by keyword
+    function filterData(data, query) {
+        const filtered = {};
         for (const [key, value] of Object.entries(data)) {
+            if (key.toLowerCase().includes(query) || JSON.stringify(value).toLowerCase().includes(query)) {
+                filtered[key] = value;
+            }
+        }
+        return filtered;
+    }
+
+    // Render data into HTML
+    function renderData(file, data) {
+        const entries = Object.entries(data);
+        if (entries.length === 0) {
+            return '';
+        }
+        let html = `<li><h4>${file.replace('.json', '')}</h4><ul>`;
+        for (const [key, value] of entries) {
             html += `<li><strong>${key}:</strong> ${typeof value === 'object' ? JSON.stringify(value, null, 2) : value}</li>`;
         }
         html += `</ul></li>`;
@@ -78,7 +161,11 @@ async function generateWithAI(prompt) {
                 'Authorization': `Bearer YOUR_API_KEY` // Replace with your OpenAI API key
             },
             body: JSON.stringify({
+codex/enhance-user-interface-and-interactivity
+                model: 'text-davinci-003',
+=======
                 model: "text-davinci-003", // or "gpt-4" if available
+main
                 prompt: prompt,
                 max_tokens: 150,
                 temperature: 0.7
@@ -88,7 +175,12 @@ async function generateWithAI(prompt) {
         const data = await response.json();
         return data.choices[0].text.trim();
     } catch (error) {
+codex/enhance-user-interface-and-interactivity
+        console.error('Error with AI generation:', error);
+        return 'An error occurred while generating content.';
+=======
         console.error("Error with AI generation:", error);
         return "An error occurred while generating content.";
+main
     }
 }

@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
-  <title>Ethyrea</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethyrea Lore System</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+codex/enhance-user-interface-and-interactivity
+    <header>
+        <h1>Ethyrea: Explore the Mythos</h1>
+        <p>Discover the rich world of Ethyrea—its characters, lore, and magic.</p>
+    </header>
+    <main>
+        <section id="navigation">
+            <h2>Categories</h2>
+            <ul>
+                <li><button class="category-btn" data-category="characters">Characters</button></li>
+                <li><button class="category-btn" data-category="worldbuilding">Worldbuilding</button></li>
+                <li><button class="category-btn" data-category="magic">Magic</button></li>
+                <li><button class="category-btn" data-category="artifacts">Artifacts</button></li>
+                <li><button class="category-btn" data-category="lore">Lore</button></li>
+            </ul>
+            <label for="search">Search Content:</label>
+            <input type="text" id="search" placeholder="Search by keyword...">
+        </section>
+        <section id="content">
+            <h2>Content Viewer</h2>
+            <div id="contentDisplay">Select a category or search to explore the lore.</div>
+        </section>
+    </main>
+    <script type="module" src="app.js"></script>
+=======
   <h1>Welcome to Ethyrea</h1>
 codex/integrate-websockets-for-real-time-updates
   <div id="contentDisplay"></div>
@@ -21,5 +46,6 @@ codex/integrate-websockets-for-real-time-updates
   <div id="contentDisplay"></div>
 main
   <script type="module" src="app.js"></script>
+main
 </body>
 </html>

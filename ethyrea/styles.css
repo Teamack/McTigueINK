@@ -1,4 +1,65 @@
-/* Stylesheet placeholder for Ethyrea site */
 body {
-  font-family: sans-serif;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+header {
+    background-color: #4a4a9a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    display: flex;
+    padding: 20px;
+}
+
+#navigation {
+    width: 25%;
+    padding-right: 20px;
+}
+
+#navigation ul {
+    list-style: none;
+    padding: 0;
+}
+
+#navigation .category-btn {
+    display: block;
+    background-color: #ddd;
+    border: none;
+    padding: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#navigation .category-btn:hover {
+    background-color: #4a4a9a;
+    color: white;
+}
+
+#content {
+    width: 75%;
+}
+
+#contentDisplay {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
 }
