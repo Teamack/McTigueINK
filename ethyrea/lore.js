@@ -14,10 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const basePath = `./${category}/`;
     const fileList = {
       "characters": ["mainProtagonistsData.json", "antagonists.json"],
-      "worldbuilding": ["geography/mountainsData.json", "flora/magicalPlants.json"],
+      "worldbuilding": [
+        "geography/mountainsData.json",
+        "flora/magicalPlants.json",
+        "fauna/magicalCreaturesData.json"
+      ],
       "magic": ["leyLinesData.json", "spells.json"],
       "artifacts": ["artifactsData.json"],
-      "lore": ["myths.json"]
+      "lore": ["mythsData.json"]
     };
 
     contentDisplay.innerHTML = `<h3>Loading ${category}...</h3>`;
