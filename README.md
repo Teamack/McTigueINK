@@ -40,3 +40,15 @@ cp .env.example .env.local
 pnpm dev
 ```
 
+### Validate content categories
+
+Run the test suite to verify that every category listed in `categories.json` has
+corresponding content files and UI entries:
+
+```bash
+npm test
+# or
+pnpm test
+```
+
+
