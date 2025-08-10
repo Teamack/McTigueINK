@@ -2,9 +2,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const contentDisplay = document.getElementById("contentDisplay");
     const searchInput = document.getElementById("search");
     const fileList = {
-        "characters": ["mainProtagonists.json", "antagonists.json"],
-        "worldbuilding": ["geography/mountains.json", "flora/magicalPlants.json"],
-        "magic": ["leyLines.json", "spells.json"],
+        "characters": [
+            "mainProtagonists.json",
+            "antagonists/kryss.json",
+            "antagonists/veregar.json",
+            "antagonists/vorath.json"
+        ],
+        "worldbuilding": [
+            "geography/mountains.json",
+            "fauna/mundane_animals.json",
+            "fauna/magical_creatures.json"
+        ],
+        "magic": [
+            "leyLines.json",
+            "spells/elemental_spells.json",
+            "spells/unique_spells.json"
+        ],
         "artifacts": ["artifacts.json"]
     };
 
