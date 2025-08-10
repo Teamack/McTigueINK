@@ -1,0 +1,10 @@
+{
+    "Elemental Burst": {
+        "type": "Elemental",
+        "effect": "Releases a burst of elemental energy." 
+    },
+    "Shadow Veil": {
+        "type": "Unique",
+        "effect": "Shrouds the caster in shadows, hiding them from sight." 
+    }
+}

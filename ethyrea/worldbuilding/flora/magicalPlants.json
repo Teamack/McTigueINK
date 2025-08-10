@@ -1,0 +1,10 @@
+{
+    "Glowmoss": {
+        "description": "A luminescent moss that glows in the presence of magic.",
+        "uses": ["Illumination", "Ritual components"]
+    },
+    "Soothgrass": {
+        "description": "A calming herb used in healing salves.",
+        "uses": ["Medicine", "Tea"]
+    }
+}

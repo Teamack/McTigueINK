@@ -1,22 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
     const contentDisplay = document.getElementById("contentDisplay");
+    const searchInput = document.getElementById("search");
 
-    const links = document.querySelectorAll("[data-category]");
-    links.forEach(link => {
-        link.addEventListener("click", async (e) => {
-            e.preventDefault();
+    // Category buttons
+    const buttons = document.querySelectorAll(".category-btn");
+    buttons.forEach(button => {
+        button.addEventListener("click", async (e) => {
             const category = e.target.getAttribute("data-category");
             await loadCategory(category);
         });
     });
 
+    // Search functionality
+    searchInput.addEventListener("input", async (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        if (query.length > 2) {
+            await searchContent(query);
+        }
+    });
+
+    // Load content for a category
     async function loadCategory(category) {
         const basePath = `/ethyrea/${category}/`;
         const fileList = {
             "characters": ["mainProtagonists.json", "antagonists.json"],
             "worldbuilding": ["geography/mountains.json", "flora/magicalPlants.json"],
             "magic": ["leyLines.json", "spells.json"],
-            "artifacts": ["artifacts.json"]
+            "artifacts": ["artifacts.json"],
+            "lore": ["myths.json"]
         };
 
         contentDisplay.innerHTML = `<h3>Loading ${category}...</h3>`;
@@ -35,6 +46,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Search content across all files
+    async function searchContent(query) {
+        const categories = ["characters", "worldbuilding", "magic", "artifacts", "lore"];
+        let results = `<h3>Search Results for \"${query}\"</h3><ul>`;
+
+        try {
+            for (const category of categories) {
+                const basePath = `/ethyrea/${category}/`;
+                const fileList = {
+                    "characters": ["mainProtagonists.json", "antagonists.json"],
+                    "worldbuilding": ["geography/mountains.json", "flora/magicalPlants.json"],
+                    "magic": ["leyLines.json", "spells.json"],
+                    "artifacts": ["artifacts.json"],
+                    "lore": ["myths.json"]
+                }[category];
+
+                for (const file of fileList) {
+                    const data = await fetch(basePath + file).then(res => res.json());
+                    const filteredData = filterData(data, query);
+                    results += renderData(file, filteredData);
+                }
+            }
+            results += "</ul>";
+            contentDisplay.innerHTML = results || `<p>No results found for \"${query}\".</p>`;
+        } catch (error) {
+            contentDisplay.innerHTML = `<p>Error during search: ${error.message}</p>`;
+        }
+    }
+
+    // Filter data by keyword
+    function filterData(data, query) {
+        const filtered = {};
+        for (const [key, value] of Object.entries(data)) {
+            if (key.toLowerCase().includes(query) || JSON.stringify(value).toLowerCase().includes(query)) {
+                filtered[key] = value;
+            }
+        }
+        return filtered;
+    }
+
+    // Render data into HTML
     function renderData(file, data) {
         let html = `<li><h4>${file.replace('.json', '')}</h4><ul>`;
         for (const [key, value] of Object.entries(data)) {
