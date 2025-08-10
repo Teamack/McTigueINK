@@ -1,0 +1,22 @@
+{
+codex/enhance-user-interface-and-interactivity
+    "Kryss": {
+        "role": "Antagonist",
+        "description": "Placeholder for Kryss's profile."
+    },
+    "Veregar": {
+        "role": "Antagonist",
+        "description": "Placeholder for Veregar's profile."
+    },
+    "Vorath": {
+        "role": "Antagonist",
+        "description": "Placeholder for Vorath's profile."
+    }
+=======
+  "Vorath": {
+    "description": "The shadowlord seeking to unravel Ethyrea's balance.",
+    "abilities": ["Shadow Surge", "Mind Rend"],
+    "motivation": "Harness the Nexus for ultimate power"
+  }
+main
+}
