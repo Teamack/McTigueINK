@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethyrea Content Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Ethyrea's Creative Hub</h1>
+        <p>Generate, align, and enhance your Ethyrea content seamlessly.</p>
+    </header>
+    <main>
+        <form id="contentForm">
+            <label for="action">Choose Action:</label>
+            <select id="action" name="action">
+                <option value="summarize">Summarize</option>
+                <option value="elaborate">Elaborate</option>
+                <option value="generateScene">Generate Scene</option>
+            </select>
+
+            <label for="input">Enter Your Prompt:</label>
+            <textarea id="input" name="input" rows="5" placeholder="Describe what you need..."></textarea>
+
+            <button type="submit">Generate</button>
+        </form>
+
+        <div id="output">
+            <h2>Generated Content</h2>
+            <p id="result">Your content will appear here.</p>
+        </div>
+    </main>
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
