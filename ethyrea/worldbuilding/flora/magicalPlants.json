@@ -1,0 +1,10 @@
+{
+  "Glowmoss": {
+    "properties": "Emits a soft light that calms nearby creatures.",
+    "uses": ["Healing Potions", "Night Lighting"]
+  },
+  "Shadow Fern": {
+    "properties": "Absorbs light, thriving in dark regions.",
+    "uses": ["Stealth Cloaks"]
+  }
+}
