@@ -38,3 +38,5 @@ cp .env.example .env.local
 
 # Dev
 pnpm dev
+```
+
