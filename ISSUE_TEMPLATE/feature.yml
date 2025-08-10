@@ -1,0 +1,13 @@
+name: Feature
+description: Request a feature
+title: "feat: "
+labels: ["feature"]
+body:
+  - type: textarea
+    id: goal
+    attributes: { label: Goal, description: What this must achieve. }
+    validations: { required: true }
+  - type: textarea
+    id: acceptance
+    attributes: { label: Acceptance Criteria, description: Given/When/Then. }
+    validations: { required: true }
