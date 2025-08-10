@@ -1,4 +1,5 @@
 {
+codex/add-json-summary-files-for-empty-categories
   "artifacts": ["artifacts.json"],
   "characters": ["mainProtagonists.json", "antagonists.json"],
   "worldbuilding": [
@@ -16,4 +17,38 @@
   "maps": ["maps.json"],
   "politics": ["politics.json"],
   "technology": ["technology.json"]
+=======
+  "characters": [
+    "mainProtagonists.json",
+    "mainProtagonistsData.json",
+    "antagonists.json",
+    "antagonists/kryss.json",
+    "antagonists/veregar.json",
+    "antagonists/vorath.json"
+  ],
+  "worldbuilding": [
+    "geography/mountains.json",
+    "geography/mountainsData.json",
+    "flora/magicalPlants.json",
+    "fauna/mundane_animals.json",
+    "fauna/magical_creatures.json",
+    "fauna/magicalCreatures.json",
+    "fauna/magicalCreaturesData.json"
+  ],
+  "magic": [
+    "leyLines.json",
+    "leyLinesData.json",
+    "spells.json",
+    "spells/elemental_spells.json",
+    "spells/unique_spells.json"
+  ],
+  "artifacts": [
+    "artifacts.json",
+    "artifactsData.json"
+  ],
+  "lore": [
+    "myths.json",
+    "mythsData.json"
+  ]
+main
 }
