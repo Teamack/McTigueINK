@@ -7,7 +7,30 @@
   <title>Ethyrea</title>
 </head>
 <body>
-  <h1>Welcome to Ethyrea</h1>
+  <header>
+    <h1>Ethyrea Lore Archive</h1>
+    <p>Dive into the world of Ethyrea</p>
+  </header>
+  <main>
+    <nav id="navigation">
+      <ul>
+        <li><button class="category-btn" data-category="characters">Characters</button></li>
+        <li><button class="category-btn" data-category="worldbuilding">Worldbuilding</button></li>
+        <li><button class="category-btn" data-category="magic">Magic</button></li>
+        <li><button class="category-btn" data-category="artifacts">Artifacts</button></li>
+      </ul>
+      <input type="text" id="search" placeholder="Search lore..." />
+    </nav>
+    <section id="content">
+      <h2>Welcome to Ethyrea</h2>
+      <div id="contentDisplay">
+        <p>Explore the vibrant world of Ethyrea, its characters, magic, and lore. Use the navigation menu to begin.</p>
+      </div>
+    </section>
+  </main>
+  <div id="loadingSpinner" style="display:none;">
+    <p>Loading...</p>
+  </div>
   <script type="module" src="app.js"></script>
 </body>
 </html>
