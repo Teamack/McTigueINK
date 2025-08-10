@@ -1,5 +1,19 @@
 import { processRequest } from '../actions/generateContent.js';
 
+// Populate categories from JSON
+async function initCategories() {
+    const categorySelect = document.getElementById('category');
+    const categories = await fetch('/ethyrea/categories.json').then(res => res.json());
+    categorySelect.innerHTML = '';
+    Object.keys(categories).forEach(cat => {
+        const option = document.createElement('option');
+        option.value = cat;
+        option.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+        categorySelect.appendChild(option);
+    });
+}
+initCategories();
+
 document.getElementById('contentForm').addEventListener('submit', async function (e) {
     e.preventDefault();
     const action = document.getElementById('action').value;

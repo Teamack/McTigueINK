@@ -1,5 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const contentDisplay = document.getElementById("contentDisplay");
+
+  // Load category mapping
+  const categories = await fetch("./categories.json").then(res => res.json());
 
   const links = document.querySelectorAll("[data-category]");
   links.forEach(link => {
@@ -12,22 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function loadCategory(category) {
     const basePath = `./${category}/`;
-    const fileList = {
-      "characters": ["mainProtagonistsData.json", "antagonists.json"],
-      "worldbuilding": [
-        "geography/mountainsData.json",
-        "flora/magicalPlants.json",
-        "fauna/magicalCreaturesData.json"
-      ],
-      "magic": ["leyLinesData.json", "spells.json"],
-      "artifacts": ["artifactsData.json"],
-      "lore": ["mythsData.json"]
-    };
+    const files = categories[category] || [];
 
     contentDisplay.innerHTML = `<h3>Loading ${category}...</h3>`;
 
     try {
-      const files = fileList[category];
       let combinedContent = `<h3>${category.toUpperCase()}</h3><ul>`;
       for (const file of files) {
         const data = await fetch(basePath + file).then(res => res.json());
