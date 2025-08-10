@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function searchContent(query) {
         const categories = ["characters", "worldbuilding", "magic", "artifacts", "lore"];
         let results = `<h3>Search Results for \"${query}\"</h3><ul>`;
+        let hasMatches = false;
 
         try {
             for (const category of categories) {
@@ -80,11 +81,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 for (const file of fileList) {
                     const data = await fetch(basePath + file).then(res => res.json());
                     const filteredData = filterData(data, query);
-                    results += renderData(file, filteredData);
+                    const itemHtml = renderData(file, filteredData);
+                    if (itemHtml) {
+                        hasMatches = true;
+                        results += itemHtml;
+                    }
                 }
             }
             results += "</ul>";
-            contentDisplay.innerHTML = results || `<p>No results found for \"${query}\".</p>`;
+            contentDisplay.innerHTML = hasMatches ? results : `<p>No results found for \"${query}\".</p>`;
         } catch (error) {
             contentDisplay.innerHTML = `<p>Error during search: ${error.message}</p>`;
         }
@@ -103,8 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render data into HTML
     function renderData(file, data) {
+        const entries = Object.entries(data);
+        if (entries.length === 0) {
+            return '';
+        }
         let html = `<li><h4>${file.replace('.json', '')}</h4><ul>`;
-        for (const [key, value] of Object.entries(data)) {
+        for (const [key, value] of entries) {
             html += `<li><strong>${key}:</strong> ${typeof value === 'object' ? JSON.stringify(value, null, 2) : value}</li>`;
         }
         html += `</ul></li>`;
