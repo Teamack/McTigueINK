@@ -1,27 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const contentDisplay = document.getElementById("contentDisplay");
     const searchInput = document.getElementById("search");
 
-    const fileList = {
-        "characters": [
-            "mainProtagonists.json",
-            "antagonists/kryss.json",
-            "antagonists/veregar.json",
-            "antagonists/vorath.json"
-        ],
-        "worldbuilding": [
-            "geography/mountains.json",
-            "fauna/mundane_animals.json",
-            "fauna/magical_creatures.json"
-        ],
-        "magic": [
-            "leyLines.json",
-            "spells/elemental_spells.json",
-            "spells/unique_spells.json"
-        ],
-        "artifacts": ["artifacts.json"]
-    };
+    // Load category mapping
+    const categories = await fetch("./categories.json").then(res => res.json());
 
+    // Attach handler to category links
+    document.querySelectorAll("[data-category]").forEach(link => {
+        link.addEventListener("click", async (e) => {
+            e.preventDefault();
+            const category = link.getAttribute("data-category");
+            await loadCategory(category);
+        });
+    });
+
+    // Websocket setup for live updates
     const socket = io('http://localhost:3000');
     socket.on('update', (data) => {
         contentDisplay.innerHTML = `<h3>Live Update</h3><p>${data}</p>`;
@@ -29,15 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function broadcastUpdate(data) {
         socket.emit('update', data);
     }
-
-    const links = document.querySelectorAll("[data-category]");
-    links.forEach(link => {
-        link.addEventListener("click", async (e) => {
-            e.preventDefault();
-            const category = e.target.getAttribute("data-category");
-            await loadCategory(category);
-        });
-    });
 
     // AI generation button
     const aiButton = document.createElement("button");
@@ -69,12 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load content for a category
     async function loadCategory(category) {
         const spinner = document.getElementById("loadingSpinner");
-        spinner.style.display = "block";
-        searchInput.value = ""; // reset previous search
+        if (spinner) spinner.style.display = "block";
+        searchInput.value = "";
+        contentDisplay.innerHTML = `<h3>Loading ${category}...</h3>`;
 
         try {
-            const basePath = `${category}/`; // use relative paths to avoid 404s
-            const files = fileList[category];
+            const basePath = `${category}/`;
+            const files = categories[category] || [];
             let combinedContent = `<h3>${category.toUpperCase()}</h3><ul>`;
             for (const file of files) {
                 const data = await fetch(basePath + file).then(res => res.json());
@@ -87,28 +72,20 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
             contentDisplay.innerHTML = `<p>Error loading ${category}: ${error.message}</p>`;
         } finally {
-            spinner.style.display = "none";
+            if (spinner) spinner.style.display = "none";
         }
     }
 
     // Search content across all files
     async function searchContent(query) {
-        const categories = ["characters", "worldbuilding", "magic", "artifacts", "lore"];
+        const categoriesList = Object.keys(categories);
         let results = `<h3>Search Results for \"${query}\"</h3><ul>`;
         let hasMatches = false;
 
         try {
-            for (const category of categories) {
+            for (const category of categoriesList) {
                 const basePath = `${category}/`;
-                const fileList = {
-                    "characters": ["mainProtagonists.json", "antagonists.json"],
-                    "worldbuilding": ["geography/mountains.json", "flora/magicalPlants.json"],
-                    "magic": ["leyLines.json", "spells.json"],
-                    "artifacts": ["artifacts.json"],
-                    "lore": ["myths.json"]
-                }[category];
-
-                for (const file of fileList) {
+                for (const file of categories[category] || []) {
                     const data = await fetch(basePath + file).then(res => res.json());
                     const filteredData = filterData(data, query);
                     const itemHtml = renderData(file, filteredData);
@@ -138,23 +115,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render data into HTML
     function renderData(file, data) {
-        let html = `<li>
-            <button class="toggle-content">${file.replace('.json', '')}</button>
-            <div class="content-detail" style="display:none;">`;
-        for (const [key, value] of Object.entries(data)) {
-            html += `<p><strong>${key}:</strong> ${typeof value === 'object' ? JSON.stringify(value, null, 2) : value}</p>`;
+        const entries = Object.entries(data);
+        if (entries.length === 0) {
+            return '';
         }
-        html += `</div></li>`;
+        let html = `<li><h4>${file.replace('.json', '')}</h4><ul>`;
+        for (const [key, value] of entries) {
+            html += `<li><strong>${key}:</strong> ${typeof value === 'object' ? JSON.stringify(value, null, 2) : value}</li>`;
+        }
+        html += `</ul></li>`;
         return html;
     }
-
-    // Toggle content visibility
-    document.addEventListener("click", (e) => {
-        if (e.target.classList.contains("toggle-content")) {
-            const detail = e.target.nextElementSibling;
-            detail.style.display = detail.style.display === "none" ? "block" : "none";
-        }
-    });
 
     function applyFade() {
         contentDisplay.classList.remove("fade-in");
@@ -173,11 +144,11 @@ async function generateWithAI(prompt) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer YOUR_API_KEY` // Replace with your OpenAI API key
+                'Authorization': `Bearer YOUR_API_KEY`
             },
             body: JSON.stringify({
-                model: "text-davinci-003", // or "gpt-4" if available
-                prompt: prompt,
+                model: 'text-davinci-003',
+                prompt,
                 max_tokens: 150,
                 temperature: 0.7
             })
@@ -186,8 +157,8 @@ async function generateWithAI(prompt) {
         const data = await response.json();
         return data.choices[0].text.trim();
     } catch (error) {
-        console.error("Error with AI generation:", error);
-        return "An error occurred while generating content.";
+        console.error('Error with AI generation:', error);
+        return 'An error occurred while generating content.';
     }
 }
 
