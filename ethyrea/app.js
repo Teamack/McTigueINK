@@ -2,26 +2,50 @@ document.addEventListener("DOMContentLoaded", () => {
     const contentDisplay = document.getElementById("contentDisplay");
     const searchInput = document.getElementById("search");
 
+codex/enhance-user-interface-and-interactivity
     // Category buttons
     const buttons = document.querySelectorAll(".category-btn");
     buttons.forEach(button => {
         button.addEventListener("click", async (e) => {
+=======
+    const socket = io('http://localhost:3000');
+
+    socket.on('update', (data) => {
+        contentDisplay.innerHTML = `<h3>Live Update</h3><p>${data}</p>`;
+    });
+
+    function broadcastUpdate(data) {
+        socket.emit('update', data);
+    }
+
+    const links = document.querySelectorAll("[data-category]");
+    links.forEach(link => {
+        link.addEventListener("click", async (e) => {
+            e.preventDefault();
+main
             const category = e.target.getAttribute("data-category");
             await loadCategory(category);
         });
     });
 
+codex/enhance-user-interface-and-interactivity
     // AI generation button
     const aiButton = document.createElement("button");
     aiButton.textContent = "Generate with AI";
     aiButton.id = "aiGenerate";
     aiButton.classList.add("category-btn");
+=======
+    const aiButton = document.createElement("button");
+    aiButton.textContent = "Generate with AI";
+    aiButton.id = "aiGenerate";
+main
     document.getElementById("navigation").appendChild(aiButton);
 
     aiButton.addEventListener("click", async () => {
         const promptText = prompt("Enter a prompt for AI (e.g., 'Describe a shadowy Nexus Point'):");
         if (promptText) {
             const generatedContent = await generateWithAI(promptText);
+codex/enhance-user-interface-and-interactivity
             contentDisplay.innerHTML = `<h3>AI Generated Content</h3><p>${generatedContent}</p>`;
         }
     });
@@ -35,6 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Load content for a category
+=======
+            document.getElementById("contentDisplay").innerHTML = `<h3>AI Generated Content</h3><p>${generatedContent}</p>`;
+        }
+    });
+
+main
     async function loadCategory(category) {
         const basePath = `/ethyrea/${category}/`;
         const fileList = {
@@ -56,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             combinedContent += "</ul>";
             contentDisplay.innerHTML = combinedContent;
+            broadcastUpdate(combinedContent);
         } catch (error) {
             contentDisplay.innerHTML = `<p>Error loading ${category}: ${error.message}</p>`;
         }
@@ -130,7 +161,11 @@ async function generateWithAI(prompt) {
                 'Authorization': `Bearer YOUR_API_KEY` // Replace with your OpenAI API key
             },
             body: JSON.stringify({
+codex/enhance-user-interface-and-interactivity
                 model: 'text-davinci-003',
+=======
+                model: "text-davinci-003", // or "gpt-4" if available
+main
                 prompt: prompt,
                 max_tokens: 150,
                 temperature: 0.7
@@ -140,7 +175,12 @@ async function generateWithAI(prompt) {
         const data = await response.json();
         return data.choices[0].text.trim();
     } catch (error) {
+codex/enhance-user-interface-and-interactivity
         console.error('Error with AI generation:', error);
         return 'An error occurred while generating content.';
+=======
+        console.error("Error with AI generation:", error);
+        return "An error occurred while generating content.";
+main
     }
 }

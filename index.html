@@ -13,6 +13,13 @@
     </header>
     <main>
         <form id="contentForm">
+            <label for="category">Content Category:</label>
+            <select id="category" name="category">
+                <option value="characters">Characters</option>
+                <option value="worldbuilding">Worldbuilding</option>
+                <option value="artifacts">Artifacts</option>
+            </select>
+
             <label for="action">Choose Action:</label>
             <select id="action" name="action">
                 <option value="summarize">Summarize</option>
@@ -29,6 +36,7 @@
         <div id="output">
             <h2>Generated Content</h2>
             <p id="result">Your content will appear here.</p>
+            <button id="saveBtn" type="button">Save</button>
         </div>
     </main>
     <script type="module" src="js/script.js"></script>

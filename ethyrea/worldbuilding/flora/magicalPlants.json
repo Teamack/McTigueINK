@@ -1,4 +1,5 @@
 {
+codex/enhance-user-interface-and-interactivity
     "Glowmoss": {
         "description": "A luminescent moss that glows in the presence of magic.",
         "uses": ["Illumination", "Ritual components"]
@@ -7,4 +8,14 @@
         "description": "A calming herb used in healing salves.",
         "uses": ["Medicine", "Tea"]
     }
+=======
+  "Glowmoss": {
+    "properties": "Emits a soft light that calms nearby creatures.",
+    "uses": ["Healing Potions", "Night Lighting"]
+  },
+  "Shadow Fern": {
+    "properties": "Absorbs light, thriving in dark regions.",
+    "uses": ["Stealth Cloaks"]
+  }
+main
 }

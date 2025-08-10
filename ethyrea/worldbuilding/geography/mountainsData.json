@@ -1,0 +1,14 @@
+{
+  "Nightveil Peaks": {
+    "description": "Shadow-infused mountains shrouded in mist, home to Vorath’s citadel.",
+    "flora": ["Shadow Fern", "Ebon Moss"],
+    "fauna": ["Night Wraith", "Shadow Owl"],
+    "significance": "A key nexus of shadow ley lines."
+  },
+  "Verdant Hollow": {
+    "description": "A lush, magical valley where earth ley lines thrive.",
+    "flora": ["Glowmoss", "Heartwood Tree"],
+    "fauna": ["Crystal Stag", "Verdant Elk"],
+    "significance": "A source of healing and balance."
+  }
+}

@@ -1,4 +1,5 @@
 {
+codex/enhance-user-interface-and-interactivity
     "Elemental Burst": {
         "type": "Elemental",
         "effect": "Releases a burst of elemental energy." 
@@ -7,4 +8,14 @@
         "type": "Unique",
         "effect": "Shrouds the caster in shadows, hiding them from sight." 
     }
+=======
+  "Lumina Burst": {
+    "element": "Light",
+    "effect": "Dazzles enemies and dispels shadows"
+  },
+  "Verdant Shield": {
+    "element": "Earth",
+    "effect": "Creates a barrier of living vines"
+  }
+main
 }
