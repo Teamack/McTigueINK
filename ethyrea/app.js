@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (query.length > 2) {
             await searchContent(query);
         } else {
-            document.querySelectorAll("#contentDisplay li").forEach(li => {
+            document.querySelectorAll("#contentDisplay > ul > li").forEach(li => {
                 li.style.display = li.textContent.toLowerCase().includes(query) ? "" : "none";
             });
         }
