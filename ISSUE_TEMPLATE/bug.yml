@@ -1,0 +1,13 @@
+name: Bug
+description: Something broke
+title: "fix: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: repro
+    attributes: { label: Repro Steps }
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes: { label: Expected vs Actual }
+    validations: { required: true }
