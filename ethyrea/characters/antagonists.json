@@ -1,0 +1,7 @@
+{
+  "Vorath": {
+    "description": "The shadowlord seeking to unravel Ethyrea's balance.",
+    "abilities": ["Shadow Surge", "Mind Rend"],
+    "motivation": "Harness the Nexus for ultimate power"
+  }
+}

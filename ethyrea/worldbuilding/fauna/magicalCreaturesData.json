@@ -1,0 +1,10 @@
+{
+  "Crystal Stag": {
+    "habitat": "Verdant Hollow",
+    "abilities": ["Healing Aura", "Forest Step"]
+  },
+  "Night Wraith": {
+    "habitat": "Nightveil Peaks",
+    "abilities": ["Phasing", "Fear Shroud"]
+  }
+}

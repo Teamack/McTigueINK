@@ -66,3 +66,11 @@ Thumbs.db
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# ===== Binary Images =====
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.svg

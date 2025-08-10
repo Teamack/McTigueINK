@@ -1,0 +1,10 @@
+{
+  "Lumina Burst": {
+    "element": "Light",
+    "effect": "Dazzles enemies and dispels shadows"
+  },
+  "Verdant Shield": {
+    "element": "Earth",
+    "effect": "Creates a barrier of living vines"
+  }
+}
