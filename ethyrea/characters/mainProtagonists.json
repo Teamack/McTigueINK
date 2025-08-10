@@ -1,0 +1,14 @@
+{
+    "Orion Obsidian": {
+        "role": "Protagonist",
+        "description": "A young adult struggling with his heritage as the son of two corrupted mages.",
+        "abilities": ["Shadow magic", "Ley line attunement"],
+        "goals": "To master his powers and restore balance to the ley lines."
+    },
+    "Thorne Obsidian": {
+        "role": "Guardian of the Ley Lines",
+        "description": "Leader of the Obsidian family, dedicated to protecting Ethyrea's balance.",
+        "abilities": ["Shadow magic", "Leadership"],
+        "goals": "To defend the Nexus Points and maintain the family's legacy."
+    }
+}
