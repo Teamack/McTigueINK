@@ -1,0 +1,8 @@
+- name: feature
+  color: 1D76DB
+- name: bug
+  color: D93F0B
+- name: chore
+  color: C2E0C6
+- name: infra
+  color: 5319E7
