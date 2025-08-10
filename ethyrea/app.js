@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const contentDisplay = document.getElementById("contentDisplay");
+    const searchInput = document.getElementById("search");
     const fileList = {
         "characters": ["mainProtagonists.json", "antagonists.json"],
         "worldbuilding": ["geography/mountains.json", "flora/magicalPlants.json"],
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             combinedContent += "</ul>";
             contentDisplay.innerHTML = combinedContent;
+            applyFade();
         } catch (error) {
             contentDisplay.innerHTML = `<p>Error loading ${category}: ${error.message}</p>`;
         } finally {
@@ -55,4 +57,22 @@ document.addEventListener("DOMContentLoaded", () => {
             detail.style.display = detail.style.display === "none" ? "block" : "none";
         }
     });
+
+    // Search within displayed content
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        document.querySelectorAll("#contentDisplay li").forEach(li => {
+            li.style.display = li.textContent.toLowerCase().includes(query) ? "" : "none";
+        });
+    });
+
+    function applyFade() {
+        contentDisplay.classList.remove("fade-in");
+        // trigger reflow to restart animation
+        void contentDisplay.offsetWidth;
+        contentDisplay.classList.add("fade-in");
+    }
+
+    // apply initial fade
+    applyFade();
 });
