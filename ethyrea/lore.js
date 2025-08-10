@@ -13,10 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
   async function loadCategory(category) {
     const basePath = `./${category}/`;
     const fileList = {
-      "characters": ["mainProtagonists.json", "antagonists.json"],
-      "worldbuilding": ["geography/mountains.json", "flora/magicalPlants.json"],
-      "magic": ["leyLines.json", "spells.json"],
-      "artifacts": ["artifacts.json"],
+      "characters": ["mainProtagonistsData.json", "antagonists.json"],
+      "worldbuilding": ["geography/mountainsData.json", "flora/magicalPlants.json"],
+      "magic": ["leyLinesData.json", "spells.json"],
+      "artifacts": ["artifactsData.json"],
       "lore": ["myths.json"]
     };
 
@@ -37,7 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderData(file, data) {
-    let html = `<li><h4>${file.replace('.json', '')}</h4><ul>`;
+    const displayName = file.replace(/Data\.json$/, '').replace('.json', '');
+    let html = `<li><h4>${displayName}</h4><ul>`;
     for (const [key, value] of Object.entries(data)) {
       html += `<li><strong>${key}:</strong> ${typeof value === 'object' ? JSON.stringify(value, null, 2) : value}</li>`;
     }
