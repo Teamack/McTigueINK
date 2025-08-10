@@ -1,0 +1,12 @@
+{
+  "Arin": {
+    "description": "A young mage discovering their connection to Ethyrea's ley lines.",
+    "abilities": ["Lightweaving", "Shadow Meld"],
+    "allegiance": "Guardians of Balance"
+  },
+  "Lyra": {
+    "description": "A ranger tied to the wild magics of Verdant Hollow.",
+    "abilities": ["Beast Whisper", "Arcane Arrow"],
+    "allegiance": "Verdant Alliance"
+  }
+}
