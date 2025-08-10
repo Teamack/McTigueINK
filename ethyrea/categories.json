@@ -1,0 +1,19 @@
+{
+  "artifacts": ["artifacts.json"],
+  "characters": ["mainProtagonists.json", "antagonists.json"],
+  "worldbuilding": [
+    "geography/mountains.json",
+    "geography/lakes.json",
+    "fauna/mundane_animals.json",
+    "fauna/magical_creatures.json",
+    "flora/magicalPlants.json"
+  ],
+  "magic": ["leyLines.json", "spells/elemental_spells.json", "spells/unique_spells.json"],
+  "lore": ["myths.json"],
+  "economy": ["economy.json"],
+  "factions": ["factions.json"],
+  "history": ["history.json"],
+  "maps": ["maps.json"],
+  "politics": ["politics.json"],
+  "technology": ["technology.json"]
+}
