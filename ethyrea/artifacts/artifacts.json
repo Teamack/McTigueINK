@@ -1,0 +1,12 @@
+{
+    "Runic Blade of Abyssion": {
+        "description": "A blade forged from obsidian and enchanted during the Echo Wars.",
+        "abilities": "Can sever magical connections to ley lines.",
+        "notableUse": "Linked to Seryndra, symbolizing the balance of light and shadow."
+    },
+    "Bloodstone Amulet": {
+        "description": "A volatile artifact bound by shadow magic.",
+        "abilities": "Grants immense physical strength but tempts the wearer with corruption.",
+        "notableUse": "Central to Orion's journey to becoming a Guardian."
+    }
+}
