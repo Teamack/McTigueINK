@@ -31,9 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadCategory(category) {
         const spinner = document.getElementById("loadingSpinner");
         spinner.style.display = "block";
+        searchInput.value = ""; // reset previous search
 
         try {
-            const basePath = `/ethyrea/${category}/`;
+            const basePath = `${category}/`; // use relative paths to avoid 404s on subdirectories
             const files = fileList[category];
             let combinedContent = `<h3>${category.toUpperCase()}</h3><ul>`;
             for (const file of files) {
