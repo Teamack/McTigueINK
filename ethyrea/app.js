@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.querySelectorAll("[data-category]").forEach(link => {
         link.addEventListener("click", async (e) => {
             e.preventDefault();
-            const category = link.getAttribute("data-category");
+            const category = e.currentTarget.getAttribute("data-category");
             await loadCategory(category);
         });
     });
