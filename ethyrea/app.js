@@ -60,6 +60,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             const basePath = `${category}/`;
             const files = categories[category] || [];
+            if (files.length === 0) {
+                contentDisplay.innerHTML = `<p>No content available for ${category}.</p>`;
+                return;
+            }
             let combinedContent = `<h3>${category.toUpperCase()}</h3><ul>`;
             for (const file of files) {
                 const data = await fetch(basePath + file).then(res => res.json());
