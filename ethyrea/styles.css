@@ -1,4 +1,3 @@
-codex/refine-user-interface-and-experience
 /* General Styles */
 body {
     font-family: 'Georgia', serif;
@@ -11,24 +10,11 @@ body {
 
 header {
     background: linear-gradient(90deg, #4a4a9a, #6b4f9a);
-=======
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-header {
-    background-color: #4a4a9a;
-main
     color: white;
     text-align: center;
     padding: 20px;
 }
 
-codex/refine-user-interface-and-experience
 header h1 {
     font-size: 2.5rem;
     margin: 0;
@@ -41,21 +27,12 @@ header p {
 main {
     display: flex;
     flex-wrap: wrap;
-=======
-main {
-    display: flex;
-main
     padding: 20px;
 }
 
 #navigation {
-codex/refine-user-interface-and-experience
     width: 20%;
     padding: 10px;
-=======
-    width: 25%;
-    padding-right: 20px;
-main
 }
 
 #navigation ul {
@@ -65,7 +42,6 @@ main
 
 #navigation .category-btn {
     display: block;
-codex/refine-user-interface-and-experience
     width: 100%;
     background-color: #ddd;
     border: none;
@@ -104,23 +80,6 @@ codex/refine-user-interface-and-experience
 #content h2 {
     font-size: 1.8rem;
     color: #4a4a9a;
-=======
-    background-color: #ddd;
-    border: none;
-    padding: 10px;
-    margin-bottom: 5px;
-    text-align: left;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#navigation .category-btn:hover {
-    background-color: #4a4a9a;
-    color: white;
-}
-
-#content {
-    width: 75%;
 }
 
 #contentDisplay {
@@ -130,15 +89,9 @@ codex/refine-user-interface-and-experience
     border: 1px solid #ccc;
 }
 
-h3 {
-    margin-bottom: 10px;
-main
-}
-
 ul {
     list-style: none;
     padding-left: 0;
-codex/refine-user-interface-and-experience
 }
 
 ul li {
@@ -177,6 +130,4 @@ button:hover {
     text-align: center;
     font-size: 1.2rem;
     color: #6b4f9a;
-=======
-main
 }
