@@ -24,3 +24,17 @@ locations:
   - id: L_VERDANT_HOLLOW
     file: ethyrea/worldbuilding/geography/verdant_hollow.md
     description: Lush valley nurturing a life-giving ley nexus.
+
+assertions:
+  - id: gate1
+    description: Gate 1 compliance
+    assert: true
+  - id: gate2
+    description: Gate 2 compliance
+    assert: true
+  - id: gate3
+    description: Gate 3 compliance
+    assert: true
+  - id: gate4
+    description: Gate 4 compliance
+    assert: true
