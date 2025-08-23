@@ -51,4 +51,8 @@ npm test
 pnpm test
 ```
 
+## Documentation
+
+See [World Expansion OS — IP Readiness Toolkit (v1)](docs/world-expansion/toolkit.md) for guidance on preparing worlds for intellectual property development.
+
 
