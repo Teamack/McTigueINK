@@ -23,3 +23,5 @@ node scripts/embed-canon.js
 ```
 
 The script reads the same YAML file, embeds each entity, and upserts the resulting vectors into the `canon_embeddings` table.
+
+Example IDs include `silver_star_tower` and `golden_gate`.
