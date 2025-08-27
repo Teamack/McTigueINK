@@ -1,8 +1,0 @@
-{
-  "characters": ["mainProtagonists.json", "antagonists.json"],
-  "worldbuilding": ["geography/mountains.json", "flora/magicalPlants.json"],
-  "magic": ["leyLines.json", "spells.json"],
-  "artifacts": ["artifacts.json"],
-  "lore": ["myths.json"]
-}
-
