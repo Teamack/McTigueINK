@@ -3,53 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethyrea Content Generator</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>McTigueINK Store</title>
+    <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Ethyrea's Creative Hub</h1>
-        <p>Generate, align, and enhance your Ethyrea content seamlessly.</p>
+    <header class="site-header">
+        <h1>McTigueINK</h1>
+        <nav>
+            <a href="#art">Art</a>
+            <a href="#courses">Courses</a>
+            <a href="#merch">Merch</a>
+        </nav>
     </header>
+
     <main>
-        <form id="contentForm">
-            <label for="category">Content Category:</label>
-            <select id="category" name="category">
-                <option value="artifacts">Artifacts</option>
-                <option value="characters">Characters</option>
-                <option value="creatures">Creatures</option>
-                <option value="economy">Economy</option>
-                <option value="factions">Factions</option>
-                <option value="gameplay">Gameplay</option>
-                <option value="guidelines">Guidelines</option>
-                <option value="history">History</option>
-                <option value="lore">Lore</option>
-                <option value="magic">Magic</option>
-                <option value="maps">Maps</option>
-                <option value="politics">Politics</option>
-                <option value="technology">Technology</option>
-                <option value="worldbuilding">Worldbuilding</option>
-            </select>
+        <section id="hero">
+            <h2>Bring Imagination to Life</h2>
+            <p>Discover original artwork, creative courses, and more.</p>
+        </section>
 
-            <label for="action">Choose Action:</label>
-            <select id="action" name="action">
-                <option value="summarize">Summarize</option>
-                <option value="elaborate">Elaborate</option>
-                <option value="generateScene">Generate Scene</option>
-            </select>
+        <section id="art" class="product-section">
+            <h2>Artwork</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="images/placeholder-art.jpg" alt="Sample art">
+                    <h3>Landscape Print</h3>
+                    <p>Coming soon</p>
+                </div>
+            </div>
+        </section>
 
-            <label for="input">Enter Your Prompt:</label>
-            <textarea id="input" name="input" rows="5" placeholder="Describe what you need..."></textarea>
+        <section id="courses" class="product-section">
+            <h2>Courses</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="images/placeholder-course.jpg" alt="Sample course">
+                    <h3>Writing Workshop</h3>
+                    <p>Coming soon</p>
+                </div>
+            </div>
+        </section>
 
-            <button type="submit">Generate</button>
-        </form>
-
-        <div id="output">
-            <h2>Generated Content</h2>
-            <p id="result">Your content will appear here.</p>
-            <button id="saveBtn" type="button">Save</button>
-        </div>
+        <section id="merch" class="product-section">
+            <h2>Merchandise</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="images/placeholder-merch.jpg" alt="Sample merchandise">
+                    <h3>Brand Tee</h3>
+                    <p>Coming soon</p>
+                </div>
+            </div>
+        </section>
     </main>
-    <script type="module" src="js/script.js"></script>
+
+    <footer>
+        <p>&copy; 2024 McTigueINK</p>
+    </footer>
 </body>
 </html>
