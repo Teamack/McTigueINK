@@ -2,8 +2,6 @@
 
 This document outlines how to rebuild the repository into a sales-focused site for McTigueINK art, courses, and merchandise.
 
-> **Note:** This plan and the codebase are still under active development.
-
 ## Goals
 - Replace existing prototype content with a streamlined sales website.
 - Highlight artwork, digital courses, and physical products.
