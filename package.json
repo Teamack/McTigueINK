@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "echo 'No tests yet'"
+    "test": "node scripts/check-links.js"
+  },
+  "devDependencies": {
+    "linkinator": "^6.1.4"
   }
 }
