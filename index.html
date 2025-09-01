@@ -14,6 +14,7 @@
             <a href="#courses">Courses</a>
             <a href="#merch">Merch</a>
         </nav>
+        <button class="checkout-btn">Cart (<span class="snipcart-items-count">0</span>)</button>
     </header>
 
     <main>
@@ -50,7 +51,15 @@
                 <div class="product-card">
                     <img src="images/placeholder-merch.jpg" alt="Sample merchandise">
                     <h3>Brand Tee</h3>
-                    <p>Coming soon</p>
+                    <p>Soft cotton tee with McTigueINK logo.</p>
+                    <button class="snipcart-add-item"
+                        data-item-id="brand-tee"
+                        data-item-name="Brand Tee"
+                        data-item-price="20.00"
+                        data-item-url="/"
+                        data-item-description="Soft cotton tee with McTigueINK logo">
+                        Add to cart
+                    </button>
                 </div>
             </div>
         </section>
@@ -59,5 +68,7 @@
     <footer>
         <p>&copy; 2024 McTigueINK</p>
     </footer>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
 </body>
 </html>
