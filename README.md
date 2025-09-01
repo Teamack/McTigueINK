@@ -33,3 +33,14 @@ Make the value available on the page as `window.SNIPCART_PUBLIC_API_KEY` before 
 ### Usage
 
 Product pages include `Add to cart` buttons and a cart widget that opens the checkout flow.
+
+### Apliiq Integration
+
+The site can connect with [Apliiq](https://apliiq.com) for merchandise production and fulfillment. Expose the required URLs as environment variables before loading `js/apliiq.js`:
+
+```
+APLIIQ_FULFILLMENT_URL=<your-fulfillment-endpoint>
+APLIIQ_WAREHOUSE_URL=<your-warehouse-endpoint>
+```
+
+Placeholder pages are provided at `/fulfillment.html` and `/warehouse-shipment.html` so Apliiq has valid endpoints during initial store setup.
