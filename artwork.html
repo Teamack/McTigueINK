@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>McTigueINK Artwork</title>
-  <link rel="stylesheet" href="css/artwork.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork - McTigueINK Store</title>
+    <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-  <header>
-    <h1>McTigueINK Artwork</h1>
-  </header>
-  <main>
-    <section>
-      <h2>Featured Landscape</h2>
-      <img src="../images/landscape-header.jpg" alt="Landscape painting of a serene valley at sunset">
-      <p>A tranquil landscape painting of rolling hills glowing beneath a vibrant sunset.</p>
-    </section>
-  </main>
+    <header class="site-header">
+        <img src="images/mctigueink-logo.png" alt="McTigueINK logo" class="site-logo">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="artwork.html">Artwork</a>
+            <a href="digital.html">Digital</a>
+            <a href="merch.html">Merch</a>
+            <a href="books.html">Books</a>
+        </nav>
+        <button class="checkout-btn">Cart (<span class="snipcart-items-count">0</span>)</button>
+    </header>
+
+    <main>
+        <section id="artwork" class="product-section">
+            <h2>Artwork</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="images/artwork.jpg" alt="Colorful sample artwork from McTigueINK">
+                    <h3>Landscape Print</h3>
+                    <p>Coming soon</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 McTigueINK</p>
+    </footer>
+    <script src="js/apliiq.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
 </body>
 </html>
