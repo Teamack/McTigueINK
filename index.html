@@ -11,10 +11,12 @@
         <img src="images/mctigueink-logo.png" alt="McTigueINK logo" class="site-logo">
         <nav>
             <a href="index.html">Home</a>
-            <a href="artwork.html">Artwork</a>
-            <a href="digital.html">Digital</a>
-            <a href="merch.html">Merch</a>
+            <a href="#art">Art</a>
+            <a href="digital.html">Courses</a>
+            <a href="#merch">Merch</a>
             <a href="books.html">Books</a>
+            <a href="#consumables">Consumables</a>
+            <a href="#programs">Programs</a>
         </nav>
         <button class="checkout-btn">Cart (<span class="snipcart-items-count">0</span>)</button>
     </header>
@@ -25,8 +27,31 @@
             <p>Discover original artwork, creative courses, and more.</p>
         </section>
 
-        <section id="featured" class="product-section">
-            <h2>Featured Products</h2>
+        <section id="art" class="product-section">
+            <h2>Artwork</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="images/artwork.jpg" alt="Colorful sample artwork from McTigueINK">
+                    <h3>Landscape Print</h3>
+                    <p>Coming soon</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses" class="product-section">
+            <h2>Courses</h2>
+            <p><a href="digital.html" target="_blank" rel="noopener">Browse our courses</a>.</p>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="images/course.jpg" alt="Desk setup representing an upcoming creative course">
+                    <h3>Writing Workshop</h3>
+                    <p>Coming soon</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="merch" class="product-section">
+            <h2>Merchandise</h2>
             <div class="product-grid">
                 <div class="product-card">
                     <img src="images/merch.jpg" alt="Black T-shirt featuring the McTigueINK logo">
@@ -36,10 +61,33 @@
                         data-item-id="brand-tee"
                         data-item-name="Brand Tee"
                         data-item-price="20.00"
-                        data-item-url="/"
+                        data-item-url="/index.html"
                         data-item-description="Soft cotton tee with McTigueINK logo">
                         Add to cart
                     </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="books" class="product-section">
+            <h2>Books</h2>
+            <p><a href="books.html">Browse our books on the dedicated page.</a></p>
+        </section>
+
+        <section id="consumables" class="product-section">
+            <h2>Consumables</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <p>Coming soon</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="programs" class="product-section">
+            <h2>Programs</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <p>Coming soon</p>
                 </div>
             </div>
         </section>
@@ -48,7 +96,12 @@
     <footer>
         <p>&copy; 2024 McTigueINK</p>
     </footer>
+    <!-- Endpoint URLs must be defined on window.APLIIQ_* and window.CREATIVEHUB_* before these scripts load -->
     <script src="js/apliiq.js"></script>
+    <script src="js/creativehub.js"></script>
+    <script>
+        window.SNIPCART_PUBLIC_API_KEY = window.SNIPCART_PUBLIC_API_KEY || '';
+    </script>
     <script src="js/cart.js"></script>
     <script src="js/checkout.js"></script>
 </body>

@@ -1,42 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artwork - McTigueINK Store</title>
-    <link rel="stylesheet" href="css/site.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - McTigueINK Store</title>
+  <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-    <header class="site-header">
-        <img src="images/mctigueink-logo.png" alt="McTigueINK logo" class="site-logo">
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="artwork.html">Artwork</a>
-            <a href="digital.html">Digital</a>
-            <a href="merch.html">Merch</a>
-            <a href="books.html">Books</a>
-        </nav>
-        <button class="checkout-btn">Cart (<span class="snipcart-items-count">0</span>)</button>
-    </header>
+  <header class="site-header">
+    <img src="images/mctigueink-logo.png" alt="McTigueINK logo" class="site-logo">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="digital.html">Digital</a>
+      <a href="books.html">Books</a>
+    </nav>
+    <button class="checkout-btn">Cart (<span class="snipcart-items-count">0</span>)</button>
+  </header>
 
-    <main>
-        <section id="artwork" class="product-section">
-            <h2>Artwork</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="images/artwork.jpg" alt="Colorful sample artwork from McTigueINK">
-                    <h3>Landscape Print</h3>
-                    <p>Coming soon</p>
-                </div>
-            </div>
-        </section>
-    </main>
+  <main>
+    <section id="products" class="product-section">
+      <h2>Products</h2>
+      <div class="product-grid">
+        <!-- Artwork Item -->
+        <div class="product-card">
+          <h3>Featured Landscape</h3>
+          <img src="images/landscape-header.jpg" alt="Landscape painting of a serene valley at sunset">
+          <p>A tranquil landscape painting print.</p>
+          <button class="snipcart-add-item"
+                  data-item-id="landscape-print"
+                  data-item-name="Landscape Print"
+                  data-item-price="150.00"
+                  data-item-url="/products.html"
+                  data-item-description="Tranquil landscape painting print">
+            Add to cart
+          </button>
+        </div>
+        <!-- Artwork Placeholder -->
+        <div class="product-card">
+          <h3>Abstract Print</h3>
+          <img src="images/artwork.jpg" alt="Colorful sample artwork from McTigueINK">
+          <p>Coming soon</p>
+        </div>
+        <!-- Merchandise Item -->
+        <div class="product-card">
+          <h3>Logo T-Shirt</h3>
+          <img src="images/logo-shirt.jpg" alt="McTigueINK Logo T-shirt">
+          <p>High-quality tee featuring the McTigueINK logo.</p>
+          <button class="snipcart-add-item"
+                  data-item-id="logo-tshirt"
+                  data-item-name="Logo T-Shirt"
+                  data-item-price="29.99"
+                  data-item-url="/products.html"
+                  data-item-description="McTigueINK Logo T-shirt">
+            Add to cart
+          </button>
+        </div>
+        <!-- Merch Placeholder -->
+        <div class="product-card">
+          <h3>Sticker Pack</h3>
+          <img src="images/sticker-pack.jpg" alt="McTigueINK sticker pack">
+          <p>Coming soon</p>
+        </div>
+        <!-- Add more products as needed -->
+      </div>
+    </section>
+  </main>
 
-    <footer>
-        <p>&copy; 2024 McTigueINK</p>
-    </footer>
-    <script src="js/apliiq.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/checkout.js"></script>
+  <footer>
+    <p>&copy; 2024 McTigueINK</p>
+  </footer>
+  <!-- Endpoint URLs must be defined on window.APLIIQ_* and window.CREATIVEHUB_* before these scripts load -->
+  <script src="js/apliiq.js"></script>
+  <script src="js/creativehub.js"></script>
+  <script>
+    window.SNIPCART_PUBLIC_API_KEY = window.SNIPCART_PUBLIC_API_KEY || '';
+  </script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
 </body>
 </html>

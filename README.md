@@ -16,31 +16,25 @@ Place product photos and artwork inside the `images` directory. See `images/READ
 
 At this stage there are no automated tests. `npm test` simply confirms the command runs.
 
-## Checkout and Cart
+## Environment Variables
 
-The site uses [Snipcart](https://snipcart.com) for cart and checkout on a static site. JavaScript in `js/cart.js` loads Snipcart using an API key supplied at runtime.
-
-### API Keys
-
-Do **not** commit API keys to version control. Expose the Snipcart public API key through your hosting provider or GitHub Secrets:
+Do **not** commit API keys to version control. Set the following values as secrets in your hosting environment (e.g., GitHub Secrets) and expose them on the page as globals before loading the related scripts:
 
 ```
 SNIPCART_PUBLIC_API_KEY=<your-public-key>
+APLIIQ_FULFILLMENT_URL=<your-fulfillment-endpoint>
+APLIIQ_WAREHOUSE_URL=<your-warehouse-endpoint>
+CREATIVE_HUB_API_KEY=<your-creative-hub-key>
 ```
 
-Make the value available on the page as `window.SNIPCART_PUBLIC_API_KEY` before loading `js/cart.js`.
+## Checkout and Cart
+
+The site uses [Snipcart](https://snipcart.com) for cart and checkout on a static site. JavaScript in `js/cart.js` loads Snipcart using an API key supplied at runtime.
 
 ### Usage
 
 Product pages include `Add to cart` buttons and a cart widget that opens the checkout flow.
 
-### Apliiq Integration
+## Apliiq Integration
 
-The site can connect with [Apliiq](https://apliiq.com) for merchandise production and fulfillment. Expose the required URLs as environment variables before loading `js/apliiq.js`:
-
-```
-APLIIQ_FULFILLMENT_URL=<your-fulfillment-endpoint>
-APLIIQ_WAREHOUSE_URL=<your-warehouse-endpoint>
-```
-
-Placeholder pages are provided at `/fulfillment.html` and `/warehouse-shipment.html` so Apliiq has valid endpoints during initial store setup.
+The site can connect with [Apliiq](https://apliiq.com) for merchandise production and fulfillment. See the environment variables section above for the required endpoints. Placeholder pages are provided at `/fulfillment.html` and `/warehouse-shipment.html` so Apliiq has valid endpoints during initial store setup.
