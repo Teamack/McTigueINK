@@ -11,9 +11,9 @@
         <img src="images/mctigueink-logo.png" alt="McTigueINK logo" class="site-logo">
         <nav>
             <a href="#art">Art</a>
-            <a href="https://payhip.com/McTigueINK" target="_blank" rel="noopener">Courses</a>
+            <a href="digital.html">Courses</a>
             <a href="#merch">Merch</a>
-            <a href="#books">Books</a>
+            <a href="books.html">Books</a>
             <a href="#consumables">Consumables</a>
             <a href="#programs">Programs</a>
         </nav>
@@ -39,7 +39,7 @@
 
         <section id="courses" class="product-section">
             <h2>Courses</h2>
-            <p><a href="https://payhip.com/McTigueINK" target="_blank" rel="noopener">Browse our courses on Payhip</a>.</p>
+            <p><a href="digital.html" target="_blank" rel="noopener">Browse our courses</a>.</p>
             <div class="product-grid">
                 <div class="product-card">
                     <img src="images/course.jpg" alt="Desk setup representing an upcoming creative course">
@@ -60,7 +60,7 @@
                         data-item-id="brand-tee"
                         data-item-name="Brand Tee"
                         data-item-price="20.00"
-                        data-item-url="/"
+                        data-item-url="/index.html"
                         data-item-description="Soft cotton tee with McTigueINK logo">
                         Add to cart
                     </button>
@@ -70,11 +70,7 @@
 
         <section id="books" class="product-section">
             <h2>Books</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <p>Coming soon</p>
-                </div>
-            </div>
+            <p><a href="books.html">Browse our books on the dedicated page.</a></p>
         </section>
 
         <section id="consumables" class="product-section">
@@ -102,6 +98,9 @@
     <!-- Endpoint URLs must be defined on window.APLIIQ_* and window.CREATIVEHUB_* before these scripts load -->
     <script src="js/apliiq.js"></script>
     <script src="js/creativehub.js"></script>
+    <script>
+        window.SNIPCART_PUBLIC_API_KEY = window.SNIPCART_PUBLIC_API_KEY || '';
+    </script>
     <script src="js/cart.js"></script>
     <script src="js/checkout.js"></script>
 </body>

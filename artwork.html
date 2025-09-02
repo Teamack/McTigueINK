@@ -3,22 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>McTigueINK Artwork</title>
-  <link rel="stylesheet" href="css/artwork.css">
+  <title>Landscape Print - McTigueINK Store</title>
+  <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-  <header>
-    <h1>McTigueINK Artwork</h1>
+  <header class="site-header">
+    <img src="images/mctigueink-logo.png" alt="McTigueINK logo" class="site-logo">
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+    <button class="checkout-btn">Cart (<span class="snipcart-items-count">0</span>)</button>
   </header>
-  <main>
-    <section>
+  <main class="product-section">
+    <div class="product-card">
       <h2>Featured Landscape</h2>
-      <img src="../images/landscape-header.jpg" alt="Landscape painting of a serene valley at sunset">
+      <img src="images/landscape-header.jpg" alt="Landscape painting of a serene valley at sunset">
       <p>A tranquil landscape painting of rolling hills glowing beneath a vibrant sunset.</p>
-    </section>
+      <button class="snipcart-add-item"
+              data-item-id="landscape-print"
+              data-item-name="Landscape Print"
+              data-item-price="150.00"
+              data-item-url="/artwork.html"
+              data-item-description="Tranquil landscape painting print">
+        Add to cart
+      </button>
+    </div>
   </main>
+  <footer>
+    <p>&copy; 2024 McTigueINK</p>
+  </footer>
   <!-- Endpoint URLs must be defined on window.APLIIQ_* and window.CREATIVEHUB_* before these scripts load -->
   <script src="js/apliiq.js"></script>
   <script src="js/creativehub.js"></script>
+  <script>
+    window.SNIPCART_PUBLIC_API_KEY = window.SNIPCART_PUBLIC_API_KEY || '';
+  </script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
 </body>
 </html>
